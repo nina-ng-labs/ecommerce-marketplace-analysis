@@ -1,0 +1,6 @@
+Olist Brazilian E-Commerce Public Dataset
+
+Source: Kaggle
+Dataset: Brazilian E-Commerce Public Dataset by Olist
+
+The raw dataset is not included in this repository.
