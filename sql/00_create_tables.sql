@@ -1,5 +1,0 @@
--- ============================================
--- Project: E-commerce Marketplace Analysis
--- File: 00_create_tables.sql
--- Database: PostgreSQL
--- ============================================
