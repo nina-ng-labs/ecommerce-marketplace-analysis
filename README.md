@@ -14,7 +14,7 @@ SQL was used for data exploration, KPI calculation, contribution analysis, and d
 
 ## Dashboard
 
-![Olist Ecommerce Marketplace Analysis](chart/ecommerce_marketplace_analysis.jpg)
+![Olist Ecommerce Marketplace Analysis](chart/olist-ecommerce-gmv-analysis-dashboard.png)
 
 The dashboard highlights:
 - Monthly GMV trend
