@@ -4,22 +4,28 @@ SQL and Power BI analysis of the Brazilian Olist ecommerce marketplace, focusing
 
 ## Project Overview
 
-This project analyzes the Olist ecommerce marketplace to understand how the business performs over time and identify the main drivers behind GMV growth.
+This project analyzes the Olist ecommerce marketplace to understand business performance and identify the main drivers behind GMV growth.
 
 The analysis follows a business investigation approach:
 
 **GMV → Orders & AOV → Customers → Categories → Sellers**
 
-SQL was used for data analysis and metric calculation, while Power BI was used to visualize key marketplace trends.
+SQL was used for data exploration, KPI calculation, contribution analysis, and driver decomposition. Power BI was used to visualize key marketplace trends.
+
+## Dashboard
+
+![Olist Ecommerce Marketplace Analysis](charts/ecommerce_marketplace_analysis.png)
+
+The dashboard highlights:
+- Monthly GMV trend
+- Top 10 product categories by GMV
 
 ## Business Questions
-
-This project investigates five main questions:
 
 1. How does GMV change over time?
 2. Which product categories contribute the most GMV?
 3. Which sellers generate the most GMV?
-4. How many customers return and place repeat orders?
+4. What percentage of customers place repeat orders?
 5. What are the main drivers behind GMV growth?
 
 ## Data Model
@@ -33,7 +39,7 @@ The analysis uses the main Olist marketplace entities:
 - Sellers
 - Payments
 
-Core relationships include:
+Core relationships:
 
 ```text
 Customers
@@ -51,27 +57,25 @@ Customers
 
 ## SQL Analysis
 
-The SQL analysis includes:
+### 1. Monthly GMV
 
-### Monthly GMV
+Monthly GMV was calculated from delivered orders to analyze marketplace performance over time.
 
-Monthly GMV is calculated from delivered orders to analyze marketplace growth over time.
+### 2. Category Contribution
 
-### Category Contribution
+Product categories were ranked by GMV to identify the categories contributing most to marketplace sales.
 
-Product categories are ranked by GMV to understand which categories contribute most to marketplace sales.
+### 3. Seller Performance
 
-### Seller Performance
+Seller GMV was analyzed to determine whether marketplace revenue is concentrated among a small number of sellers.
 
-Seller GMV is analyzed to measure seller contribution and determine whether marketplace revenue is concentrated among a small number of sellers.
+### 4. Repeat Customer Rate
 
-### Repeat Customer Rate
+Customers were grouped using `customer_unique_id` to identify customers who placed more than one delivered order.
 
-Customers are grouped using `customer_unique_id` to identify customers who placed more than one delivered order.
+### 5. GMV Driver Decomposition
 
-### GMV Driver Decomposition
-
-GMV is decomposed into two primary components:
+GMV was decomposed into two primary components:
 
 ```text
 GMV = Orders × Average Order Value
@@ -85,10 +89,10 @@ This allows GMV changes to be investigated through changes in order volume and A
 - In the January–February 2017 investigation period, **GMV increased by approximately 109.5%**.
 - **Order volume increased by approximately 120.4%**, making it the primary driver of GMV growth.
 - **AOV decreased by approximately 4.9%**, meaning higher order volume offset the decline in average order value.
-- Only around **3% of customers were repeat customers**, indicating that the marketplace relies heavily on first-time customers.
+- Only around **3% of customers were repeat customers**, indicating strong reliance on first-time customers.
 - The **top 10 product categories contribute approximately 63.27% of GMV**, while the largest category contributes only **9.45%**.
 - The **top 10 sellers contribute approximately 13.29% of GMV**, with the largest seller contributing only **1.72%**.
-- Marketplace GMV therefore shows relatively low dependence on any single category and particularly low seller concentration.
+- GMV is therefore diversified across categories and particularly distributed across the seller base, with no single category or seller dominating marketplace sales.
 
 ## Business Investigation Tree
 
@@ -113,37 +117,34 @@ GMV Growth
     └── Top 10 Sellers = 13.29%
 ```
 
-The analysis suggests that **order volume is the primary growth driver**, while customer retention represents an important opportunity for more sustainable marketplace growth.
+The investigation suggests that **order volume was the primary driver of GMV growth**, while customer retention represents an important opportunity for more sustainable marketplace growth.
 
 ## Business Recommendations
-
-Based on the analysis:
 
 - Improve customer retention and encourage first-time buyers to place additional orders.
 - Monitor both order volume and AOV when evaluating GMV growth.
 - Track category contribution over time to identify emerging growth categories.
-- Maintain a diversified seller base rather than becoming dependent on a small number of high-GMV sellers.
-
-## Power BI Dashboard
-
-The Power BI analysis includes:
-
-- **Monthly GMV Trend**
-- **Top 10 Categories by GMV**
-
-Additional dashboard assets are stored in the project folders.
+- Maintain a diversified seller base and monitor seller concentration as the marketplace grows.
 
 ## Repository Structure
 
 ```text
 ecommerce-marketplace-analysis/
 │
+├── README.md
+│
 ├── charts/
+│   └── ecommerce_marketplace_analysis.png
+│
 ├── dashboard/
+│   └── ecommerce_marketplace_analysis.pbix
+│
 ├── data_model/
+│   ├── data-modeling-notes.md
+│   └── schema_diagram.png
+│
 ├── dataset/
-├── images/
-├── report/
+│   └── dataset_link.txt
 │
 ├── sql/
 │   ├── category_gmv.sql
@@ -152,13 +153,12 @@ ecommerce-marketplace-analysis/
 │   ├── repeat_customer_rate.sql
 │   └── seller_revenue.sql
 │
-├── LICENSE
-└── README.md
+└── LICENSE
 ```
 
 ## Tools
 
-- **PostgreSQL** — data analysis and metric calculation
+- **PostgreSQL** — data analysis and KPI calculation
 - **DataGrip** — SQL development
 - **Power BI** — data visualization
 - **Git & GitHub** — version control and project documentation
@@ -167,9 +167,12 @@ ecommerce-marketplace-analysis/
 
 **Olist Brazilian E-Commerce Public Dataset**
 
-The dataset contains marketplace data covering customers, orders, products, sellers, payments, and order items.
+Source: Kaggle  
+Dataset: Brazilian E-Commerce Public Dataset by Olist
 
-Dataset source information is available in the `dataset/` directory.
+https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
+The raw dataset is not included in this repository.
 
 ## Skills Demonstrated
 
@@ -181,8 +184,8 @@ Dataset source information is available in the `dataset/` directory.
 - Customer retention analysis
 - Driver decomposition
 - Business investigation
-- Power BI visualization
 - Data modeling
+- Power BI visualization
 
 ## Key Business Insight
 
